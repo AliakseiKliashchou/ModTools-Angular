@@ -1,0 +1,10 @@
+<div class="main" *ngIf='data'>
+    <span class="text">{{data.text}}</span><br><br>
+    <h2>Risks</h2>
+    <span>General risk: {{data.topics[0]}}</span><br><br>
+    <span>Vulgar: {{data.topics[5]}}</span>
+    <h2>Predictions</h2>
+    en: {{data.predictions.lang_en*100}}% <div class='procentage'><div class="values" [ngStyle]="{'width': data.predictions.lang_en*100 + '%'}"></div></div>
+    fr: {{data.predictions.lang_fr*100}}% <div class='procentage'><div class="values" [ngStyle]="{'width': data.predictions.lang_fr*100 + '%'}"></div></div>
+    fraud: {{data.predictions.topic_fraud*100}}% <div class='procentage'><div class="values" [ngStyle]="{'width': data.predictions.topic_fraud*100 + '%'}"></div></div>
+</div>

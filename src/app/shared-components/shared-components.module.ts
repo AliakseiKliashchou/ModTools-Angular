@@ -16,7 +16,7 @@ import { OptionButtonGroupComponent } from './option-button-group/option-button-
     BreadcrumbsComponent,
     LoadingIndicatorComponent,
     MoreButtonComponent,
-    OptionButtonGroupComponent,
+    OptionButtonGroupComponent
   ],
   imports: [
     CommonModule,

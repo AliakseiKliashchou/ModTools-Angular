@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'a11y-flyout',
+  selector: 'app-a11y-flyout',
   templateUrl: './a11y-flyout.component.html',
   styleUrls: ['./a11y-flyout.component.less']
 })

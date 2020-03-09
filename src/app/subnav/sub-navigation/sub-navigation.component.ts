@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { has } from 'lodash';
 
 @Component({
-  selector: 'sub-navigation',
+  selector: 'app-sub-navigation',
   templateUrl: './sub-navigation.component.html',
   styleUrls: ['./sub-navigation.component.less']
 })

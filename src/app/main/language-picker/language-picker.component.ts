@@ -3,9 +3,10 @@ import { sortBy } from 'lodash';
 
 import { Languages } from 'src/constants';
 import { UserService } from 'src/app/shared-components/user.service';
+import { ApiService } from './../../shared-components/services/api.service';
 
 @Component({
-  selector: 'language-picker',
+  selector: 'app-language-picker',
   templateUrl: './language-picker.component.html',
   styleUrls: ['./language-picker.component.less']
 })
@@ -16,13 +17,16 @@ export class LanguagePickerComponent implements OnInit {
 
   languages = [];
 
-  constructor(private userService:UserService) {}
+  constructor(
+    private userService: UserService,
+    private apiService: ApiService
+  ) { }
 
   async ngOnInit() {
-    
+
     // Get the current user
     const user = await this.userService.me();
-    
+
     // Filter the user's languages by the ones they're allowed to use
     if (user?.config?.allowedLanguages) {
       this.languages = Languages.filter(lang => user.config.allowedLanguages.includes(lang.code));
@@ -36,8 +40,10 @@ export class LanguagePickerComponent implements OnInit {
   /**
    * Fired when the user changes their language
    */
-  onLanguageChanged () {
+  onLanguageChanged (selectedLang) {
     this.languageChanged.emit(this.selectedLanguage);
+    const changedLang = selectedLang.split(':')[1];
+    this.apiService.changeLanguage(changedLang);
   }
 
 }

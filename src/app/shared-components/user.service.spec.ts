@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 
 describe('UserService', () => {
-  
+
   let httpClient:HttpClient;
   let httpTestingController:HttpTestingController;
   let service: UserService;
@@ -15,8 +15,8 @@ describe('UserService', () => {
       imports: [ HttpClientTestingModule ]
     });
 
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
     service = TestBed.inject(UserService);
   });
 

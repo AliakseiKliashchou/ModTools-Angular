@@ -1,6 +1,6 @@
 <select name="client"
         [(ngModel)]="selectedClient"
-        (change)="onClientChanged()"
+        (change)="onClientChanged($event.target.value)"
 >
   <option *ngFor="let client of clients"
           [ngValue]="client.id">{{ client.name }}</option>

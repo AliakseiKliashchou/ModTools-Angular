@@ -4,7 +4,7 @@ import { UserService } from 'src/app/shared-components/user.service';
 import { User } from 'src/app/shared-components/user';
 
 @Component({
-  selector: 'main-header',
+  selector: 'app-main-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.less']
 })
@@ -12,26 +12,28 @@ export class HeaderComponent implements OnInit {
 
   user:User
 
-  constructor(public UserService:UserService) { }
+  constructor(public userService: UserService) { }
 
   async ngOnInit() {
-    this.user = await this.UserService.me();
+    this.user = await this.userService.me();
   }
 
   onUserChangedClient (newClient:number) {
-    // TODO #codereview This smells bad.
-    // Oughtn't I be able to write this as this.UserService.preferences.language = newLanguage?
-    const prefs = this.UserService.preferences;
+    const prefs = this.userService.preferences;
     prefs.lastClientId = newClient;
-    this.UserService.preferences = prefs;
+    this.userService.preferences = prefs;
   }
 
   onUserChangedLanguage (newLanguage:string) {
-    // TODO #codereview This smells bad.
-    // Oughtn't I be able to write this as this.UserService.preferences.language = newLanguage?
-    const prefs = this.UserService.preferences;
+    const prefs = this.userService.preferences;
     prefs.language = newLanguage;
-    this.UserService.preferences = prefs;
+    this.userService.preferences = prefs;
+  }
+
+  onUserChangedContentType (newContentType:string) {
+    const prefs = this.userService.preferences;
+    prefs.lastContentType = newContentType;
+    this.userService.preferences = prefs;
   }
 
 }

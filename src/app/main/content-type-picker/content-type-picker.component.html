@@ -1,0 +1,7 @@
+<select name="client"
+        [(ngModel)]="selectedContentType"
+        (change)="onContentTypeChanged($event)"
+>
+  <option *ngFor="let contentType of contentTypes"
+          [ngValue]="contentType">{{ contentType }}</option>
+</select>

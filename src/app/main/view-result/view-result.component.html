@@ -1,0 +1,24 @@
+<div class="mainWrapper">
+
+    <div class="wrapper" *ngIf='data'>
+        <div class="itemContainer" *ngFor='let item of extendedFirstArray; let i = index'>
+            <div class='item beforeGraduateColor'>{{item}}</div>
+        </div>
+    </div>    
+    
+    <div class="wrapper" *ngIf='data'>
+        <div class="itemContainer" *ngFor='let item of extendedSecondArray; let i = index' >
+            <div [ngStyle]="{'background-color' : item.color}" class='item' [ngClass]='{infoBlockMain:item.flagToShow}'>{{item.value}}
+                <div *ngIf='item.flagToShow' class="infoBlock">
+                    <ul>
+                        <li>{{item.value}}</li>
+                        <li>{{extendedFirstArray[i]}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+</div>
+
+<app-side-bar></app-side-bar>

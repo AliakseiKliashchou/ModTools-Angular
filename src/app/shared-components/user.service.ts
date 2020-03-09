@@ -3,19 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import * as Sentry from '@sentry/browser';
 
 import { User, UserPreferences } from './user';
-import { DefaultLanguage, DefaultClient } from 'src/constants';
+import { DefaultLanguage, DefaultClient, DefaultContentType } from 'src/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  defaultPrefs:UserPreferences = {
+  defaultPrefs: UserPreferences = {
     language: DefaultLanguage,
-    lastClientId: DefaultClient
+    lastClientId: DefaultClient,
+    lastContentType: DefaultContentType
   };
 
-  defaultUser:User = {
+  defaultUser: User = {
     moderatorId: 'user@example.com',
     displayName: 'DEFAULT USER',
     email: 'user@example.com',
@@ -25,14 +26,15 @@ export class UserService {
     photos: [],
     provider: 'NONE',
     config: {
-      allowedLanguages: ['en'],
+      allowedLanguages: ['en', 'ru'],
       allowedClients: [60]
     }
-  }
-  prefs:UserPreferences;
-  user:User;
+  };
 
-  constructor(private http:HttpClient) {}
+  prefs: UserPreferences;
+  public user: User;
+
+  constructor(private http: HttpClient) {}
 
   async me () : Promise<User> {
 
@@ -40,9 +42,7 @@ export class UserService {
     if (this.user) return this.user;
 
     try {
-
       this.user = this.defaultUser;
-
       // this.user = await this.http.get<User>('/me').toPromise();
 
       // // Set the user in Sentry

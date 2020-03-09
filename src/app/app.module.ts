@@ -10,10 +10,12 @@ import { MainModule } from './main/main.module';
 import { SubnavModule } from './subnav/subnav.module';
 
 import { SentryErrorHandler } from 'src/app/shared-components/sentry.service';
+import { ApiService } from './shared-components/services/api.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,10 +24,12 @@ import { SentryErrorHandler } from 'src/app/shared-components/sentry.service';
     MainModule,
     SubnavModule,
     BreadcrumbModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
-    { provide: ErrorHandler, useClass: SentryErrorHandler }
+    // { provide: ErrorHandler, useClass: SentryErrorHandler },
+    ApiService,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
